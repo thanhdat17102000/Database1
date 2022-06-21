@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image',255);
             $table->integer('quantity');
             $table->string('description',255);
+            $table->enum('status',['pending','approve','reject'])->default("pending");
             $table->timestamps();
         });
     }
