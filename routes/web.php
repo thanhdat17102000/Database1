@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controllers\ProductConTroller;
-use App\Http\Controllers\ProductController as ControllersProductController;
+use App\Http\Controllers\ProductConTroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +15,11 @@ use App\Http\Controllers\ProductController as ControllersProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route("product.index"));
 });
-Route::resource('/product',ControllersProductController::class);
+Route::resource('/product',ProductController::class);
+Route::get('/product/delete/{id}', [ProductConTroller::class,'delete']);
+Route::get('/pending', [ProductConTroller::class,'pending']);
+Route::get('/approve', [ProductConTroller::class,'approve']);
+Route::get('/reject', [ProductConTroller::class,'reject']);
+Route::get('search', [ProductConTroller::class,'search'])->name='search';
