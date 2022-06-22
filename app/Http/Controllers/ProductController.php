@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use URL;
+use File;
 use Illuminate\Http\Request;
 use \App\Models\ProductModel;
 
@@ -110,7 +111,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $deleteImage= URL::asset('/uploads/'.$request->imageCurrent);
+        $deleteImage= asset('/uploads/'.$request->imageCurrent);
         if(file_exists($deleteImage)){
             unlink($deleteImage);
         }
